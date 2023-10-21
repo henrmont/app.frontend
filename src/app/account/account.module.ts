@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { IonicModule } from '@ionic/angular';
-import { CreatePageComponent } from './pages/create-page/create-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 import { PinPageComponent } from './pages/pin-page/pin-page.component';
 import { LockPageComponent } from './pages/lock-page/lock-page.component';
+import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
+import { LoginAccountPageComponent } from './pages/login-account-page/login-account-page.component';
 
 
 @NgModule({
   declarations: [
-    LoginPageComponent,
-    CreatePageComponent,
+    LoginAccountPageComponent,
+    CreateAccountPageComponent,
     ForgotPasswordPageComponent,
     PinPageComponent,
     LockPageComponent
@@ -21,7 +22,9 @@ import { LockPageComponent } from './pages/lock-page/lock-page.component';
   imports: [
     CommonModule,
     IonicModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AccountModule { }

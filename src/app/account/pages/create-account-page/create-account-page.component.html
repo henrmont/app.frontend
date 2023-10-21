@@ -1,31 +1,32 @@
 <ion-content>
   <section class="account">
-    <div class="content">
+    <form class="content" [formGroup]="formulario" (ngSubmit)="onSubmit()">
       <ion-item fill="outline" lines="none">
-        <ion-input type="email" name="email" placeholder="email"></ion-input>
+        <ion-input type="email" name="email" formControlName="email" placeholder="email" (blur)="checkEmail()"></ion-input>
         <ion-icon name="mail-outline"></ion-icon>
       </ion-item>
 
       <ion-item fill="outline" lines="none">
-        <ion-input type="text" name="username" placeholder="username"></ion-input>
+        <ion-input type="text" name="username" formControlName="alias" placeholder="username"></ion-input>
         <ion-icon name="at-outline"></ion-icon>
       </ion-item>
 
       <ion-item fill="outline" lines="none">
-        <ion-input type="password" name="psw" placeholder="password"></ion-input>
+        <ion-input type="password" name="psw" formControlName="password" placeholder="password"></ion-input>
         <ion-icon name="eye-off-outline"></ion-icon>
         <!-- <ion-icon *ngIf="showPsw==true" name="eye-outline" color="warning" class="iconEye"></ion-icon> -->
       </ion-item>
 
       <ion-item fill="outline" lines="none">
-        <ion-input type="password" name="cpsw" placeholder="confirmar password"></ion-input>
+        <ion-input type="password" name="cpsw" formControlName="cpassword" placeholder="confirmar password" (keyup)="checkPassword()"></ion-input>
         <ion-icon name="eye-off-outline"></ion-icon>
         <!-- <ion-icon *ngIf="showPsw==true" name="eye-outline" color="warning" class="iconEye"></ion-icon> -->
       </ion-item>
 
-      <ion-button expand="block" [routerLink]="['/account/pin']">Criar conta</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="formulario.invalid || !isPasswordChecked || isEmailExists">Criar conta</ion-button>
 
       <ion-button expand="block" [routerLink]="['/']">Voltar</ion-button>
-    </div>
+    </form>
   </section>
 </ion-content>
+

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { CreatePageComponent } from './pages/create-page/create-page.component';
 import { ForgotPasswordPageComponent } from './pages/forgot-password-page/forgot-password-page.component';
 import { PinPageComponent } from './pages/pin-page/pin-page.component';
 import { LockPageComponent } from './pages/lock-page/lock-page.component';
+import { CreateAccountPageComponent } from './pages/create-account-page/create-account-page.component';
+import { LoginAccountPageComponent } from './pages/login-account-page/login-account-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPageComponent
+    component: LoginAccountPageComponent
   },
   {
     path: 'create',
-    component: CreatePageComponent
+    component: CreateAccountPageComponent
   },
   {
     path: 'forgot/password',

@@ -1,12 +1,12 @@
 <ion-content>
   <section class="account">
-    <div class="content">
+    <form class="content" [formGroup]="formulario" (ngSubmit)="onSubmit()">
       <ion-item fill="outline" lines="none">
-        <ion-input type="email" name="email" placeholder="email"></ion-input>
+        <ion-input type="email" name="username" formControlName="username" placeholder="email"></ion-input>
         <ion-icon name="mail-outline"></ion-icon>
       </ion-item>
       <ion-item fill="outline" lines="none">
-        <ion-input type="password" name="psw" placeholder="password"></ion-input>
+        <ion-input type="password" name="psw" formControlName="password" placeholder="password"></ion-input>
         <ion-icon name="eye-off-outline" class="iconEye"></ion-icon>
         <!-- <ion-icon *ngIf="showPsw==true" name="eye-outline" color="warning" class="iconEye"></ion-icon> -->
       </ion-item>
@@ -15,9 +15,9 @@
         <ion-label slot="end"><a [routerLink]="['forgot/password']">Esqueci a senha.</a></ion-label>
       </ion-item>
 
-      <ion-button expand="block" [routerLink]="['/account/lock']">Entrar</ion-button>
+      <ion-button expand="block" type="submit" [disabled]="formulario.invalid">Entrar</ion-button>
 
       <ion-button expand="block" [routerLink]="['create']">Criar conta</ion-button>
-    </div>
+    </form>
   </section>
 </ion-content>

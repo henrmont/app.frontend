@@ -5,11 +5,11 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-pin-page',
-  templateUrl: './pin-page.component.html',
-  styleUrls: ['./pin-page.component.scss'],
+  selector: 'app-login-account-page',
+  templateUrl: './login-account-page.component.html',
+  styleUrls: ['./login-account-page.component.scss'],
 })
-export class PinPageComponent  implements OnInit {
+export class LoginAccountPageComponent  implements OnInit {
 
   formulario!: FormGroup
 
@@ -22,20 +22,14 @@ export class PinPageComponent  implements OnInit {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      pin: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-      cpin: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-    })
-
-    this.accountService.getAccount().subscribe({
-      next: (response: any) => {
-        console.log(response)
-      }
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
     })
   }
 
   onSubmit() {
     if (this.formulario.valid) {
-      this.accountService.getValidAccount(this.formulario.value).subscribe({
+      this.accountService.loginAccount(this.formulario.value).subscribe({
         next: (response: any) => {
           window.localStorage.setItem('token', response.token)
           window.localStorage.setItem('refresh_token', response.refresh_token)
